@@ -14,7 +14,7 @@ const thoughtSchema = new Schema({
         get: (dateToFormat) => { return dateToFormat.getDate() }
     },
     username:{
-        type: string,
+        type: String,
         require: true
     },
     reactions:[reactionSchema],
