@@ -1,0 +1,20 @@
+{
+  "name": "youblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aedelfrid/YouBlog.git"
+  },
+  "author": "aedelfrid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aedelfrid/YouBlog/issues"
+  },
+  "homepage": "https://github.com/aedelfrid/YouBlog#readme"
+}
