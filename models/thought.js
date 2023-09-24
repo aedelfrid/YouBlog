@@ -10,9 +10,8 @@ const thoughtSchema = new Schema({
     },
     createdAt:{
         type: Date, 
-        default: Date.now
-        // getter method to format the timestamp on query
-        get: 
+        default: Date.now,
+        get: (dateToFormat) => { return dateToFormat.getDate() }
     },
     username:{
         type: string,
@@ -20,8 +19,6 @@ const thoughtSchema = new Schema({
     },
     reactions:[reactionSchema],
 });
-
-const 
 
 thoughtSchema.virtual('reactionCount').get(async () => {
     return this.reactions.length
