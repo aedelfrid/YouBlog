@@ -23,15 +23,14 @@ module.exports = {
     },
     deleteReaction: async (req, res) => {
         try {
-            const reactionID = req.params.id;
+            const thoughtID = req.params.id;
+            const { reactionID } = req.body.reactionID
 
-            const deletedReaction = await Thought
-                .findOne({reactions: { reactionId: reactionID }})
-                .select('_id')
-                .updateOne(
-                    { _id: deletedReaction._id },
-                    { $pull: { reactions: reactionID }}
-                );
+            const deletedReaction = await Thought.findOneAndUpdate(
+                { _id: thoughtID },
+                { $pull: {reactions: { reactionId: reactionID }} },
+                { new: true}
+            );
 
             res.status(200).json(deletedReaction)
         } catch (err) {
