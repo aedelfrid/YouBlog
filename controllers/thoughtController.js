@@ -12,7 +12,7 @@ module.exports = {
     },
     getOneThought: async (req, res) => {
         try {
-            const thoughtID = req.params.id
+            const thoughtID = req.params.thoughtID
             const thoughtData = await Thought.findOne({ _id: thoughtID })
                 .select('-__v');
 
@@ -44,7 +44,7 @@ module.exports = {
     },
     updateThought: async (req, res) => {
         try {
-            const thoughtID = req.params.id;
+            const thoughtID = req.params.thoughtID;
             const updatedThought = await Thought.findOneAndUpdate(
                 { _id:thoughtID }, 
                 req.body,
@@ -58,7 +58,7 @@ module.exports = {
     },
     deleteThought: async (req, res) => {
         try {
-            const thoughtID = req.params.id;
+            const thoughtID = req.params.thoughtID;
             const deletedThought = await Thought.findOneAndDelete(
                 { _id:thoughtID }
             );

@@ -11,7 +11,7 @@ module.exports = {
     },
     getSingleUser: async (req, res) => {
         try {
-            const userID = req.params.id;
+            const userID = req.params.userID;
             const userData = await User.findOne({_id: userID})
             .select('-__v')
             .populate(
@@ -39,7 +39,7 @@ module.exports = {
     },
     deleteUser: async (req, res) => {
         try {
-            const userID = req.params.id;
+            const userID = req.params.userID;
 
             const username = await User.findOne({ _id:userID })
                 .select(`username`)
@@ -54,7 +54,7 @@ module.exports = {
     },
     updateUser: async (req, res) => {
         try {
-            const userID = req.params.id;
+            const userID = req.params.userID;
             const updatedUser = await User.updateOne({ _id:userID }, req.body)
 
             res.status(200).json(`User of id ${userID} 
@@ -67,8 +67,8 @@ module.exports = {
     },
     addFriend: async (req, res) => {
         try {
-            const userID = req.params.id;
-            const { friendID } = req.body
+            const {userID, friendID} = req.params;
+       
             const friendAddedUser = await User.findOneAndUpdate(
                 { _id: userID },
                 { $addToSet: { friends: friendID}},
@@ -82,8 +82,8 @@ module.exports = {
     },
     removeFriend: async (req, res) => {
         try {
-            const userID = req.params.id;
-            const { friendID } = req.body
+            const {userID, friendID} = req.params;
+            
             const friendRemovedUser = await User.findOneAndUpdate(
                 { _id: userID },
                 { $pull: { friends: friendID}},
