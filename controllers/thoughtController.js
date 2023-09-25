@@ -30,7 +30,7 @@ module.exports = {
 
             const thoughtID = newThought._id
 
-            const user = await User.findByIdAndUpdate(
+            const user = await User.findOneAndUpdate(
                 { _id: userId },
                 { $addToSet: { thoughts: thoughtID} },
                 { new: true }

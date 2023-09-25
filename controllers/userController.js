@@ -42,7 +42,7 @@ module.exports = {
             const userID = req.params.id;
 
             const username = await User.findOne({ _id:userID })
-                .select(`username -_id -email -thoughts -friends`)
+                .select(`username`)
                 .deleteOne({ _id:userID })
 
             const deletedThoughts = await Thought.deleteMany({username: username})

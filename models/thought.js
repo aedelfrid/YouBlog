@@ -17,7 +17,7 @@ const thoughtSchema = new Schema({
         type: String,
         require: true
     },
-    reactions:[reactionSchema],
+    reactions:[reactionSchema]
 });
 
 thoughtSchema.virtual('reactionCount').get(async () => {
