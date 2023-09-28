@@ -20,6 +20,6 @@
   "homepage": "https://github.com/aedelfrid/YouBlog#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "mongoose": "^7.5.2"
+    "mongoose": "^7.5.3"
   }
 }

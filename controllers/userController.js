@@ -6,6 +6,7 @@ module.exports = {
             const userData = await User.find()
             res.status(200).json(userData)
         } catch (err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },
@@ -14,13 +15,14 @@ module.exports = {
             const userID = req.params.userID;
             const userData = await User.findOne({_id: userID})
             .select('-__v')
-            .populate(
+            .populate([
                 { path:'thoughts', select:'-__v' }, 
                 { path:'friends', select:'-__v' }
-            );
+            ]);
                 
             res.status(200).json(userData)
         } catch (err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },
@@ -32,8 +34,9 @@ module.exports = {
                 email: email
             })
 
-            res.status(200).json(`User with ${{ username, email }} created!`)
+            res.status(200).json(`User with ${username, email} created!`)
         } catch (err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },
@@ -49,6 +52,7 @@ module.exports = {
 
             res.status(200).json(`User of id ${userID}, and associated thoughts are deleted.`)
         } catch (err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },
@@ -57,11 +61,9 @@ module.exports = {
             const userID = req.params.userID;
             const updatedUser = await User.updateOne({ _id:userID }, req.body)
 
-            res.status(200).json(`User of id ${userID} 
-            is updated by the following parameters 
-            ${req.body}.
-        `);
+            res.status(200).json(`User is updated!`);
         } catch (err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },
@@ -69,14 +71,20 @@ module.exports = {
         try {
             const {userID, friendID} = req.params;
        
-            const friendAddedUser = await User.findOneAndUpdate(
+            const friendAdd = await User.findOneAndUpdate(
                 { _id: userID },
                 { $addToSet: { friends: friendID}},
                 { new: true}
             );
+            const userFriendAdd = await User.findOneAndUpdate(
+                { _id: friendID },
+                { $addToSet: { friends: userID}},
+                { new: true}
+            );
 
-            res.status(200).json(friendAddedUser)
+            res.status(200).json('Users added as friends!')
         } catch (err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },
@@ -89,9 +97,15 @@ module.exports = {
                 { $pull: { friends: friendID}},
                 { new: true}
             );
+            const userRemovedFriend = await User.findOneAndUpdate(
+                { _id: friendID },
+                { $pull: { friends: userID}},
+                { new: true}
+            );
 
-            res.status(200).json(friendRemovedUser)
+            res.status(200).json("Friend removed!")
         } catch (err) {
+            console.log(err)
             res.status(500).json(err);
         }
     },
