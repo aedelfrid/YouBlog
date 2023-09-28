@@ -1,4 +1,4 @@
-const { User, Thought } = require('../models');
+const { Thought, reactionSchema } = require('../models');
 
 module.exports = {
     addReaction: async (req, res) => {
@@ -7,14 +7,14 @@ module.exports = {
             const {reactionBody,  username} = req.body
 
             const thought = await Thought.findOne({_id: thoughtID})
-            
-            thought.reactions.push( new reactionSchema (
-                    { reactionBody: reactionBody, username: username }
-            ) )
+            thought.reactions.push(
+                { reactionBody: reactionBody, username: username }
+            );
             await thought.save()
 
             res.status(200).json(`Added reaction!`)
         } catch (err) {
+            console.log(err)
             res.status(400).json(err)
         }
     },
