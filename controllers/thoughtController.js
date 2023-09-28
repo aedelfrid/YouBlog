@@ -23,21 +23,20 @@ module.exports = {
     },
     createThought: async (req, res) => {
         try {
-            const { thoughtText, username, userId} = req.body
+            const { thoughtText, username, userID} = req.body
             const newThought = await Thought.create(
                 {thoughtText: thoughtText, username: username }
             );
 
             const thoughtID = newThought._id
 
-            const user = await User.findOneAndUpdate(
-                { _id: userId },
+            await User.updateOne(
+                { _id: userID },
                 { $addToSet: { thoughts: thoughtID} },
                 { new: true }
             );
 
-            res.status(200).json(`Added new thought with data ${newThought}.
-                Pushed thought ID to ${userId}'s thoughts`)
+            res.status(200).json(`Added new thought! Pushed thought ID to user's thoughts`)
         } catch (err) {
             res.status(400).json(err)
         }
@@ -51,7 +50,7 @@ module.exports = {
                 { new: true }
             );
             
-            res.status(200).json(`Updated thought as follows; ${updatedThought}`)
+            res.status(200).json(`Updated thought!`)
         } catch (err) {
             res.status(400).json(err)
         }
@@ -63,7 +62,7 @@ module.exports = {
                 { _id:thoughtID }
             );
             
-            res.status(200).json(`Deleted following thought; ${deletedThought}`)
+            res.status(200).json(`Deleted thought!`)
         } catch (err) {
             res.status(400).json(err)
         }
