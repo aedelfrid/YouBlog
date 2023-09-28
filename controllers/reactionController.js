@@ -3,37 +3,37 @@ const { User, Thought } = require('../models');
 module.exports = {
     addReaction: async (req, res) => {
         try {
-            const thoughtID = req.params.id;
+            const thoughtID = req.params.thoughtID;
             const {reactionBody,  username} = req.body
 
-            const addedReaction = await Thought.findOneAndUpdate(
-                { _id: thoughtID },
-                { $addToSet: { reactions: { reactionBody: reactionBody, username: username } }},
-                { new: true }
-            );
+            const thought = await Thought.findOne({_id: thoughtID})
+            
+            thought.reactions.push( new reactionSchema (
+                    { reactionBody: reactionBody, username: username }
+            ) )
+            await thought.save()
 
-            res.status(200).json(
-                `Added reaction: 
-                ${addedReaction}
-                to Thought ID ${thoughtID}`
-            )
+            res.status(200).json(`Added reaction!`)
         } catch (err) {
             res.status(400).json(err)
         }
     },
     deleteReaction: async (req, res) => {
         try {
-            const thoughtID = req.params.id;
+            const thoughtID = req.params.thoughtID;
             const { reactionID } = req.body.reactionID
 
-            const deletedReaction = await Thought.findOneAndUpdate(
-                { _id: thoughtID },
-                { $pull: {reactions: { reactionId: reactionID }} },
-                { new: true}
-            );
+            const thought = await Thought.findOne({_id: thoughtID})
 
-            res.status(200).json(deletedReaction)
+            const reaction = thought.reactions.find(reactionId => reactionId === reactionID)
+
+            thought.reactions.splice(reaction)
+
+            thought.save()
+
+            res.status(200).json('Deleted reaction!')
         } catch (err) {
+            console.log(err)
             res.status(400).json(err)
         }
     }
