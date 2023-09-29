@@ -28,10 +28,11 @@ module.exports = {
             username: "ROvELEsA"
         },
         {
-            thoughtText: "consectetur adipiscing elit. "
+            thoughtText: "consectetur adipiscing elit. ",
+            username:"arctiste"
         },
         {
-            thoughtText: "Praesent fringilla tellus vehicula enim ullamcorper, .",
+            thoughtText: "Praesent fringilla tellus vehicula enim ullamcorper.",
             username: "ritabley"
         },
         {
