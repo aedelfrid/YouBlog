@@ -24,23 +24,22 @@ module.exports = {
 
     thoughtSeeds: [
         {
-            thoughtText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla tellus vehicula enim ullamcorper, at sodales lorem facilisis. Nullam placerat sapien et quam laoreet iaculis. Aliquam ullamcorper lorem ante, non mattis tortor sagittis eu. Aliquam ac tempor nibh. Vestibulum sit amet laoreet arcu. Aenean ut diam eget nunc finibus cursus. Pellentesque rutrum dapibus pellentesque.",
+            thoughtText: "Lorem ipsum dolor sit amet.",
             username: "ROvELEsA"
         },
         {
-            thoughtText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla tellus vehicula enim ullamcorper, at sodales lorem facilisis. Nullam placerat sapien et quam laoreet iaculis. Aliquam ullamcorper lorem ante, non mattis tortor sagittis eu. Aliquam ac tempor nibh. Vestibulum sit amet laoreet arcu. Aenean ut diam eget nunc finibus cursus. Pellentesque rutrum dapibus pellentesque.",
-            username: "arctiste"
+            thoughtText: "consectetur adipiscing elit. "
         },
         {
-            thoughtText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla tellus vehicula enim ullamcorper, at sodales lorem facilisis. Nullam placerat sapien et quam laoreet iaculis. Aliquam ullamcorper lorem ante, non mattis tortor sagittis eu. Aliquam ac tempor nibh. Vestibulum sit amet laoreet arcu. Aenean ut diam eget nunc finibus cursus. Pellentesque rutrum dapibus pellentesque.",
+            thoughtText: "Praesent fringilla tellus vehicula enim ullamcorper, .",
             username: "ritabley"
         },
         {
-            thoughtText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla tellus vehicula enim ullamcorper, at sodales lorem facilisis. Nullam placerat sapien et quam laoreet iaculis. Aliquam ullamcorper lorem ante, non mattis tortor sagittis eu. Aliquam ac tempor nibh. Vestibulum sit amet laoreet arcu. Aenean ut diam eget nunc finibus cursus. Pellentesque rutrum dapibus pellentesque.",
+            thoughtText: "at sodales lorem facilisis.",
             username: "Floromancy"
         },
         {
-            thoughtText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent fringilla tellus vehicula enim ullamcorper, at sodales lorem facilisis. Nullam placerat sapien et quam laoreet iaculis. Aliquam ullamcorper lorem ante, non mattis tortor sagittis eu. Aliquam ac tempor nibh. Vestibulum sit amet laoreet arcu. Aenean ut diam eget nunc finibus cursus. Pellentesque rutrum dapibus pellentesque.",
+            thoughtText: "Nullam placerat sapien et quam laoreet iaculis.",
             username: "Mondayitis"
         }
     ],
